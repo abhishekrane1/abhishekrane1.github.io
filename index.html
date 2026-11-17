@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abhishek Rane – Data Analytics Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF1F4; --surface:#FFFFFF; --ink:#14213D; --muted:#4F5D75; --line:#CFD6DF;
+  --accent:#0B7A75; --signal:#B7791F; --code-bg:#14213D; --code-ink:#DCE6F2; --code-key:#7FD6CF; --code-str:#F2C46D;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1626; --surface:#16213A; --ink:#E8EEF7; --muted:#9DABC2; --line:#2A3858;
+    --accent:#5CCFC8; --signal:#F2C46D; --code-bg:#0A1120; --code-ink:#DCE6F2; --code-key:#7FD6CF; --code-str:#F2C46D;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1626; --surface:#16213A; --ink:#E8EEF7; --muted:#9DABC2; --line:#2A3858;
+  --accent:#5CCFC8; --signal:#F2C46D; --code-bg:#0A1120; --code-ink:#DCE6F2; --code-key:#7FD6CF; --code-str:#F2C46D;
+  color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.6}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--signal);outline-offset:3px;border-radius:4px}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px}
+header.top{display:flex;justify-content:flex-end;align-items:center;padding:16px 0}
+header.top b{font-weight:800;font-size:18px;letter-spacing:-.01em}
+nav a{margin-left:20px;color:var(--muted);text-decoration:none;font-size:15px}
+nav a:hover{color:var(--ink)}
+@media(max-width:620px){nav{display:none}}
+
+.hero{padding:0 0 64px}
+h1{font-size:clamp(40px,8.5vw,92px);line-height:.95;letter-spacing:-.04em;font-weight:800;margin:0 0 14px}
+.tag{font-size:clamp(22px,3.4vw,36px);line-height:1.2;letter-spacing:-.015em;font-weight:600;color:var(--accent);margin:0 0 18px;max-width:28ch}
+.lede{font-size:clamp(18px,2.2vw,22px);max-width:56ch;color:var(--muted);margin:0 0 36px}
+.sql{background:var(--code-bg);color:var(--code-ink);border-radius:10px;padding:22px 24px;font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:14px;line-height:1.75;overflow-x:auto}
+.sql .k{color:var(--code-key)} .sql .s{color:var(--code-str)} .sql .c{color:#7C8CA8}
+.result{margin-top:16px;border-top:1px solid #2A3858;padding-top:14px;min-width:560px}
+.result table{border-collapse:collapse;width:100%}
+.result th{font-weight:500;text-align:left;color:#7C8CA8;padding:4px 18px 8px 0;font-size:13px}
+.result td{padding:5px 18px 5px 0;color:#fff}
+.result td:last-child{color:var(--code-str)}
+.result tr.row{opacity:0}
+.result.ran tr.row{animation:show .35s forwards}
+@keyframes show{to{opacity:1}}
+.run{margin-top:14px;font:inherit;font-family:"IBM Plex Mono",monospace;font-size:13px;background:transparent;color:var(--code-key);border:1px solid var(--code-key);border-radius:6px;padding:6px 14px;cursor:pointer}
+.run:hover{background:var(--code-key);color:var(--code-bg)}
+
+.glance{border-top:1px solid var(--line)}
+.glance div{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line)}
+.glance b{font-size:28px;letter-spacing:-.02em;color:var(--accent);line-height:1.1}
+.glance span{color:var(--muted)}
+@media(max-width:560px){.glance div{grid-template-columns:110px 1fr}.glance b{font-size:22px}}
+
+.chart-title{font-size:20px;margin:36px 0 6px}
+.chart-title:first-of-type{margin-top:0}
+.chart-note{color:var(--muted);font-size:15px;margin-bottom:18px}
+.brow{display:grid;grid-template-columns:230px 1fr 110px;gap:16px;align-items:center;padding:10px 0}
+.blabel{font-weight:600;line-height:1.3}
+.blabel span{display:block;font-weight:400;color:var(--muted);font-size:14px}
+.track{height:22px;background:var(--surface);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.fill{height:100%;width:0;background:var(--accent);transition:width 1s cubic-bezier(.2,.7,.2,1)}
+.chart.in .fill{width:var(--w)}
+.bval{font-weight:800;font-size:18px;text-align:right}
+@media(max-width:700px){.brow{grid-template-columns:1fr 90px;gap:6px 12px}.track{grid-column:1 / -1;order:3}}
+@media(prefers-reduced-motion:reduce){.fill{transition:none;width:var(--w)}}
+
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(28px,4vw,40px);letter-spacing:-.02em;line-height:1.1;margin:0 0 28px;font-weight:800}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+p{margin:0 0 16px;max-width:62ch}
+
+.job{display:grid;grid-template-columns:170px 1fr;gap:12px 32px;padding:0 0 36px 0}
+.job .when{color:var(--muted);font-size:15px;padding-top:4px}
+.job h3{margin:0;font-size:22px;letter-spacing:-.01em}
+.job .org{color:var(--accent);font-weight:600;margin-bottom:10px}
+.job ul{margin:0;padding-left:18px}
+.job li{margin-bottom:6px;max-width:68ch}
+@media(max-width:700px){.job{grid-template-columns:1fr}}
+.jobs{border-left:3px solid var(--accent);padding-left:28px;margin-left:2px}
+@media(max-width:700px){.jobs{padding-left:18px}}
+
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
+.skills h3{font-size:18px;margin:0 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{background:var(--surface);border:1px solid var(--line);padding:4px 12px;border-radius:999px;font-size:15px}
+
+.project{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:32px}
+.project h3{font-size:26px;margin:0 0 6px}
+.project .meta{color:var(--muted);margin-bottom:18px}
+.project ul{margin:0;padding-left:18px}
+.project li{margin-bottom:8px}
+
+.awards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.awards div{padding:18px 0;border-top:3px solid var(--signal)}
+.awards b{display:block;font-size:20px;line-height:1.25}
+.awards span{color:var(--muted);font-size:15px}
+
+.contact{font-size:clamp(22px,3.5vw,32px);font-weight:600;line-height:1.5}
+.contact a{display:block;width:fit-content}
+footer{padding:32px 0 48px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+.theme{font:inherit;font-size:14px;background:none;border:1px solid var(--line);color:var(--muted);border-radius:6px;padding:4px 12px;cursor:pointer}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.result tr.row{opacity:1;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <nav><a href="#about">About</a><a href="#experience">Experience</a><a href="#impact">Impact</a><a href="#skills">Skills</a><a href="#project">Project</a><a href="#contact">Contact</a></nav>
+  </header>
+
+  <main>
+  <div class="hero">
+    <h1>Abhishek<br>Rane</h1>
+    <p class="tag">I turn business questions into trusted data.</p>
+    <p class="lede">Data analytics engineer in Mumbai with 8+ years in data and IT, building SQL, ETL and BI solutions that give hundreds of people answers without waiting on an analyst.</p>
+
+<div class="glance">
+<div><b>$500K+</b><span>potential savings found in car warranty claims</span></div>
+<div><b>200+</b><span>business users on self-service Power BI dashboards</span></div>
+<div><b>40+ hrs</b><span>of manual reporting removed every month</span></div>
+<div><b>30%</b><span>fewer Azure Data Factory pipeline failures</span></div>
+<div><b>95%</b><span>accuracy on enterprise-wide KPIs</span></div>
+</div>
+  </div>
+
+  <section id="about">
+    <h2>About</h2>
+    <div class="two">
+      <div>
+        <p>I began in desktop support, moved into SQL reporting, and now design the data models, pipelines and dashboards that business teams rely on every day.</p>
+        <p>That path shaped how I work: I start with what the person using the report needs to decide, then build the simplest reliable thing that gets them there.</p>
+      </div>
+      <div>
+        <p>My tools are Snowflake, Power BI, QlikSense, Azure Data Factory and SQL. I also care about the unglamorous parts: data validation, consistent KPI definitions and documentation that lets the next person pick up my work.</p>
+        <p>I have worked with global stakeholders, including an on-site assignment in Italy.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="jobs">
+      <div class="job">
+        <div class="when">Oct 2022 – present</div>
+        <div><h3>I&amp;F Decision Sci Practitioner Analyst</h3><div class="org">Accenture</div>
+        <ul>
+          <li>Built a car warranty analytics report that identified $500K+ in potential savings through better claim management.</li>
+          <li>Defined enterprise-wide KPIs with 95% reporting accuracy, used for leadership decisions.</li>
+          <li>Developed Power BI data models behind interactive dashboards for 200+ business users.</li>
+          <li>Maintained Azure Data Factory pipelines, cutting failures by 30% and holding 99% SLA compliance.</li>
+          <li>Automated monthly reporting, removing 40+ hours of manual work each month.</li>
+          <li>Reduced data discrepancies by 25% through validation across integrated sources.</li>
+          <li>Ran cost-saving analyses behind a 15% annual expense reduction.</li>
+          <li>Delivered an international client assignment in Italy, improving cross-country collaboration efficiency by 25%.</li>
+        </ul></div>
+      </div>
+      <div class="job">
+        <div class="when">Jun 2021 – Oct 2022</div>
+        <div><h3>SQL Reporting Analyst</h3><div class="org">Apex Services</div>
+        <ul>
+          <li>Created 50+ custom SQL and MS Access reports, speeding up client decisions by 30%.</li>
+          <li>Automated monthly dashboards with QlikSense and VBA, saving 25+ hours per cycle.</li>
+          <li>Defined requirements with business units, reducing report rework by 25%.</li>
+          <li>Changed schema design to improve reporting accuracy by 15%.</li>
+        </ul></div>
+      </div>
+      <div class="job">
+        <div class="when">Jun 2019 – Mar 2021</div>
+        <div><h3>Customer Support Engineer</h3><div class="org">CMS IT Services</div>
+        <ul>
+          <li>Retrieved and validated credit rating reports with SQL and PL/SQL, cutting analyst review time by 20%.</li>
+          <li>Wrote technical documentation that improved onboarding and handover efficiency by 35%.</li>
+          <li>Reduced client-reported incidents by 18% over six months.</li>
+        </ul></div>
+      </div>
+      <div class="job">
+        <div class="when">Feb 2018 – Jul 2019</div>
+        <div><h3>Desktop Support Engineer</h3><div class="org">Future Focus / Kaizen IT Services</div>
+        <ul>
+          <li>Resolved 100+ tickets a month with a 95% first-time resolution rate for 200+ users.</li>
+          <li>Documented fixes that reduced recurring incidents by 15%, and sped up remote support by 30%.</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact">
+    <h2>Impact in numbers</h2>
+    <div class="chart" role="img" aria-label="Bar charts: automation saved 40+ hours a month at Accenture and 25+ hours per cycle at Apex Services; 99% SLA compliance, 95% KPI accuracy, 95% first-time resolution, 90%+ customer satisfaction">
+      <h3 class="chart-title">Hours of manual work removed per month</h3>
+      <div class="chart-note">Bars show the hours saved by automating recurring reports.</div>
+      <div class="brow"><div class="blabel">Accenture<span>Automated monthly reporting workflows</span></div><div class="track"><div class="fill" style="--w:80%"></div></div><div class="bval">40+ hrs</div></div>
+      <div class="brow"><div class="blabel">Apex Services<span>QlikSense and VBA dashboards, per cycle</span></div><div class="track"><div class="fill" style="--w:50%"></div></div><div class="bval">25+ hrs</div></div>
+
+      <h3 class="chart-title">Quality and reliability</h3>
+      <div class="chart-note">Measured out of 100%.</div>
+      <div class="brow"><div class="blabel">Pipeline SLA compliance<span>Azure Data Factory, Accenture</span></div><div class="track"><div class="fill" style="--w:99%"></div></div><div class="bval">99%</div></div>
+      <div class="brow"><div class="blabel">Enterprise KPI reporting accuracy<span>Leadership reporting, Accenture</span></div><div class="track"><div class="fill" style="--w:95%"></div></div><div class="bval">95%</div></div>
+      <div class="brow"><div class="blabel">First-time ticket resolution<span>100+ tickets a month, Future Focus</span></div><div class="track"><div class="fill" style="--w:95%"></div></div><div class="bval">95%</div></div>
+      <div class="brow"><div class="blabel">Customer satisfaction<span>Across 200+ users, Future Focus</span></div><div class="track"><div class="fill" style="--w:90%"></div></div><div class="bval">90%+</div></div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div><h3>Databases and languages</h3><div class="chips"><span>SQL</span><span>PL/SQL</span><span>PostgreSQL</span><span>Oracle</span><span>Snowflake</span><span>VBA</span></div></div>
+      <div><h3>BI and reporting</h3><div class="chips"><span>Power BI</span><span>QlikSense</span><span>Excel</span><span>Data visualization</span></div></div>
+      <div><h3>Data engineering</h3><div class="chips"><span>Azure Data Factory</span><span>ETL</span><span>Data warehousing</span><span>Data modeling</span><span>Automation scripting</span></div></div>
+    </div>
+  </section>
+
+  <section id="project">
+    <h2>Project</h2>
+    <div class="project">
+      <h3>Smart SQL Builder Agent</h3>
+      <div class="meta">AI-assisted SQL generation, built with GitHub Copilot</div>
+      <ul>
+        <li>Built an agent that reads a plain-language business request and writes production-ready SQL.</li>
+        <li>Documented table-level models, column definitions and relationships so the agent resolves joins, filters and aggregations correctly.</li>
+        <li>Used prompt engineering and schema grounding to improve accuracy and avoid invented tables or columns.</li>
+        <li>Shortened query development time for ad-hoc reports, freeing analysts for deeper work.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="recognition">
+    <h2>Recognition</h2>
+    <div class="awards">
+      <div><b>Star of Business</b><span>H1 2025</span></div>
+      <div><b>Most Adaptable Performer</b><span>Q2 FY2026</span></div>
+      <div><b>Star Performer</b><span>Multiple quarters</span></div>
+    </div>
+    <p style="margin-top:28px">I also run training sessions on SQL and BI tools for teammates, which has improved team efficiency and knowledge retention.</p>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <p><b>B.E. in Electronics and Telecommunication Engineering</b><br>Vivekanand Education Society’s Institute of Technology (VESIT), Mumbai, 2016</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact">
+      <a href="mailto:abhishek.rane94@gmail.com">abhishek.rane94@gmail.com</a>
+      <a href="tel:+919819729199">+91 98197 29199</a>
+      <a href="https://www.linkedin.com/in/abhishek-rane-3b5396102/" rel="noopener">LinkedIn profile</a>
+    </div>
+    <p style="margin-top:16px;color:var(--muted)">Based in Mumbai, India. Open to data analytics and BI engineering roles.</p>
+  </section>
+  </main>
+
+  <footer>
+    <button class="theme" id="theme" type="button">Switch theme</button>
+    <span style="margin-left:12px">© Abhishek Rane</span>
+  </footer>
+</div>
+<script>
+(function(){
+  var ch=document.querySelector('.chart');
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e,o){if(e[0].isIntersecting){ch.classList.add('in');o.disconnect();}},{threshold:.25}).observe(ch);
+  }else{ch.classList.add('in');}
+  document.getElementById('theme').addEventListener('click',function(){
+    var el=document.documentElement;
+    var dark=el.getAttribute('data-theme')==='dark'||(el.getAttribute('data-theme')!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches);
+    el.setAttribute('data-theme',dark?'light':'dark');
+  });
+})();
+</script>
+</body>
+</html>
